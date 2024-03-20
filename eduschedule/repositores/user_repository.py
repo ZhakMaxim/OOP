@@ -28,4 +28,7 @@ class UserRepository(BaseRepository):
         pass
 
     def delete(self, user_id, *args, **kwargs):
-        pass
+        if user_id in self.users:
+            del self.users[user_id]
+            return True
+        return False

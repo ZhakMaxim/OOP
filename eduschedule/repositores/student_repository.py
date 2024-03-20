@@ -10,7 +10,7 @@ class StudentRepository(BaseRepository):
         self.next_id = 1
 
     def list(self, *args, **kwargs):
-        pass
+        return list(self.students.values())
 
     def get(self, student_id, *args, **kwargs):
         student = self.students.get(student_id)
@@ -21,6 +21,10 @@ class StudentRepository(BaseRepository):
             return student, student_marks
 
         return None
+
+    def get_by_group_id(self, group_id, *args, **kwargs):
+        students = [student for student in list(self.students.values()) if student.group_id == group_id]
+        return students
 
     def create(self, student, *args, **kwargs):
         new_student_id = self.next_id

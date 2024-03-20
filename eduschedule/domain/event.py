@@ -3,7 +3,7 @@ from datetime import date
 
 
 @dataclass(frozen=True)
-class Event():
+class Event:
 
     _id: int
     _name: str
