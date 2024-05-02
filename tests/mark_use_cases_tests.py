@@ -1,8 +1,8 @@
 import unittest
 from datetime import date
 from unittest.mock import MagicMock
-from eduschedule.domain.mark import Mark
-from eduschedule.use_cases.mark_use_cases import (
+from eduschedule_lib.domain.mark import Mark
+from eduschedule_lib.use_cases.mark_use_cases import (
     CreateMarkUseCase,
     GetMarkUseCase,
     UpdateMarkUseCase,

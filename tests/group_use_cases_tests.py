@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
-from eduschedule.domain.group import Group
-from eduschedule.use_cases.group_use_cases import (
+from eduschedule_lib.domain.group import Group
+from eduschedule_lib.use_cases.group_use_cases import (
     CreateGroupUseCase,
     GetGroupUseCase,
     UpdateGroupUseCase,

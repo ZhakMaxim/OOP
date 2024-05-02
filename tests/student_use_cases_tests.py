@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
-from eduschedule.domain.student import Student
-from eduschedule.use_cases.student_use_cases import (
+from eduschedule_lib.domain.student import Student
+from eduschedule_lib.use_cases.student_use_cases import (
     CreateStudentUseCase,
     GetStudentUseCase,
     UpdateStudentUseCase,

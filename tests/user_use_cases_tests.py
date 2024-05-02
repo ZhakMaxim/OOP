@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
-from eduschedule.domain.user import User, UserStatus
-from eduschedule.use_cases.user_use_cases import CreateUserUseCase
+from eduschedule_lib.domain.user import User, UserStatus
+from eduschedule_lib.use_cases.user_use_cases import CreateUserUseCase
 
 
 class TestUserUseCases(unittest.TestCase):

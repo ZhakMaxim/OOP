@@ -1,8 +1,8 @@
 import unittest
 from datetime import date
 from unittest.mock import MagicMock
-from eduschedule.domain.event import Event
-from eduschedule.use_cases.event_use_cases import (
+from eduschedule_lib.domain.event import Event
+from eduschedule_lib.use_cases.event_use_cases import (
     ListEventsUseCase,
     GetEventUseCase,
     CreateEventUseCase,
