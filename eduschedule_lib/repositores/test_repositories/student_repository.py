@@ -1,6 +1,6 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.student import Student
-from eduschedule_lib.repositores.mark_repository import MarkRepository
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.student import Student
+from eduschedule.repositores.test_repositories.mark_repository import MarkRepository
 
 
 class StudentRepository(BaseRepository):

@@ -1,5 +1,5 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.user import User
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.user import User
 
 
 class UserRepository(BaseRepository):

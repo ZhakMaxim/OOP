@@ -1,5 +1,5 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.schedule import Schedule
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.schedule import Schedule
 
 class ScheduleRepository(BaseRepository):
     def __init__(self):

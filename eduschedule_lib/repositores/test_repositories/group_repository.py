@@ -1,5 +1,5 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.group import Group
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.group import Group
 
 class GroupRepository(BaseRepository):
     def __init__(self):

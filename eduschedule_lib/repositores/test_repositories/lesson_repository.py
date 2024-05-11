@@ -1,6 +1,6 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.repositores.schedule_repository import ScheduleRepository
-from eduschedule_lib.domain.lesson import Lesson
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.repositores.test_repositories.schedule_repository import ScheduleRepository
+from eduschedule.domain.lesson import Lesson
 
 
 class LessonRepository(BaseRepository):

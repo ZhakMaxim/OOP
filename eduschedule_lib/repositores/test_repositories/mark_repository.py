@@ -1,5 +1,5 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.mark import Mark
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.mark import Mark
 
 
 class MarkRepository(BaseRepository):

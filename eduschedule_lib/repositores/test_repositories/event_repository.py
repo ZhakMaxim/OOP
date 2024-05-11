@@ -1,5 +1,5 @@
-from eduschedule_lib.interfaces.repository import BaseRepository
-from eduschedule_lib.domain.event import Event
+from eduschedule.interfaces.repository import BaseRepository
+from eduschedule.domain.event import Event
 
 
 class EventRepository(BaseRepository):
