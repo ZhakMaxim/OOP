@@ -1,7 +1,6 @@
-from eduschedule_lib.repositores.group_repository import GroupRepository
 
 class CreateGroupUseCase:
-    def __init__(self, group_repository: GroupRepository):
+    def __init__(self, group_repository):
         self.group_repository = group_repository
 
     def execute(self, group):
@@ -9,7 +8,7 @@ class CreateGroupUseCase:
         return group_id
 
 class GetGroupUseCase:
-    def __init__(self, group_repository: GroupRepository):
+    def __init__(self, group_repository):
         self.group_repository = group_repository
 
     def execute(self, group_id):
@@ -17,7 +16,7 @@ class GetGroupUseCase:
         return group
 
 class UpdateGroupUseCase:
-    def __init__(self, group_repository: GroupRepository):
+    def __init__(self, group_repository):
         self.group_repository = group_repository
 
     def execute(self, group):
@@ -25,7 +24,7 @@ class UpdateGroupUseCase:
         return result
 
 class DeleteGroupUseCase:
-    def __init__(self, group_repository: GroupRepository):
+    def __init__(self, group_repository):
         self.group_repository = group_repository
 
     def execute(self, group_id):

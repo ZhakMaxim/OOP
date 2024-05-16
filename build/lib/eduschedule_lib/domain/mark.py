@@ -6,6 +6,7 @@ class Mark:
     _id: int
     _value: int
     _date: date
+    _subject: str
     _student_id: int
 
     @property
@@ -19,6 +20,10 @@ class Mark:
     @property
     def date(self):
         return self._date
+
+    @property
+    def subject(self):
+        return self._subject
 
     @property
     def student_id(self):

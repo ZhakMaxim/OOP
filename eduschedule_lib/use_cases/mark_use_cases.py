@@ -1,15 +1,13 @@
-from eduschedule_lib.repositores.mark_repository import MarkRepository
-
 class CreateMarkUseCase:
-    def __init__(self, mark_repository: MarkRepository):
+    def __init__(self, mark_repository):
         self.mark_repository = mark_repository
 
-    def execute(self, mark, student_id):
-        mark_id = self.mark_repository.create(mark, student_id=student_id)
+    def execute(self, mark):
+        mark_id = self.mark_repository.create(mark)
         return mark_id
 
 class GetMarkUseCase:
-    def __init__(self, mark_repository: MarkRepository):
+    def __init__(self, mark_repository):
         self.mark_repository = mark_repository
 
     def execute(self, mark_id):
@@ -17,7 +15,7 @@ class GetMarkUseCase:
         return mark
 
 class UpdateMarkUseCase:
-    def __init__(self, mark_repository: MarkRepository):
+    def __init__(self, mark_repository):
         self.mark_repository = mark_repository
 
     def execute(self, mark):
@@ -25,7 +23,7 @@ class UpdateMarkUseCase:
         return result
 
 class DeleteMarkUseCase:
-    def __init__(self, mark_repository: MarkRepository):
+    def __init__(self, mark_repository):
         self.mark_repository = mark_repository
 
     def execute(self, mark_id):

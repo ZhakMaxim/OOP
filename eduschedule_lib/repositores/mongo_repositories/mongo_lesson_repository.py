@@ -1,11 +1,10 @@
-from eduschedule.interfaces.repository import BaseRepository
-from eduschedule.domain.lesson import Lesson
+from eduschedule_lib.interfaces.repository import BaseRepository
 
 
 class MongoLessonRepository(BaseRepository):
     def __init__(self, db, schedule_repository):
         self.db = db
-        self.lessons_collection = db["lessons"]
+        self.lessons_collection = db.lessons
         self.schedule_repository = schedule_repository
 
     def create(self, lesson, *args, **kwargs):
@@ -16,13 +15,12 @@ class MongoLessonRepository(BaseRepository):
             schedule = self.schedule_repository.create_schedule(group_id)
 
         new_lesson = {
-            "_id": self.get_next_id(),
-            "_lesson_name": lesson.lesson_name,
-            "_day_of_week": lesson.day_of_week,
-            "_start_time": lesson.start_time,
-            "_end_time": lesson.end_time,
-            "_classroom": lesson.classroom,
-            "_schedule_id": schedule.id
+            "_lesson_name": lesson["lesson_name"],
+            "_day_of_week": lesson["day_of_week"],
+            "_start_time": lesson["start_time"],
+            "_end_time": lesson["end_time"],
+            "_classroom": lesson["classroom"],
+            "_schedule_id": str(schedule["_id"]),
         }
 
         result = self.lessons_collection.insert_one(new_lesson)
@@ -34,16 +32,19 @@ class MongoLessonRepository(BaseRepository):
     def get(self, lesson_id, *args, **kwargs):
         return self.lessons_collection.find_one({"_id": lesson_id})
 
+    def get_by_group_id(self, group_id):
+        schedule = self.schedule_repository.get(group_id)
+        return list(self.lessons_collection.find({"_schedule_id": str(schedule["_id"])}))
+
     def update(self, lesson):
         update_result = self.lessons_collection.update_one(
-            {"_id": lesson.id},
+            {"_id": lesson["_id"]},
             {"$set": {
-                "_lesson_name": lesson.lesson_name,
-                "_day_of_week": lesson.day_of_week,
-                "_start_time": lesson.start_time,
-                "_end_time": lesson.end_time,
-                "_classroom": lesson.classroom,
-                "_schedule_id": lesson.schedule_id
+                "_lesson_name": lesson["lesson_name"],
+                "_day_of_week": lesson["day_of_week"],
+                "_start_time": lesson["start_time"],
+                "_end_time": lesson["end_time"],
+                "_classroom": lesson["classroom"],
             }}
         )
         return update_result.modified_count > 0
@@ -51,7 +52,3 @@ class MongoLessonRepository(BaseRepository):
     def delete(self, lesson_id, *args, **kwargs):
         result = self.lessons_collection.delete_one({"_id": lesson_id})
         return result.deleted_count > 0
-
-    def get_next_id(self):
-        count = self.lessons_collection.count_documents({})
-        return count + 1 if count > 0 else 1

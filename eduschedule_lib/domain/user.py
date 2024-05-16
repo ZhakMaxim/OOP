@@ -6,7 +6,7 @@ class UserStatus(Enum):
     ADMINISTRATION = 'администрация'
 
 
-@dataclass()
+@dataclass(frozen=True)
 class User:
     _id: int
     _login: str
@@ -30,21 +30,7 @@ class User:
     def status(self):
         return self._status
 
-    @status.setter
-    def status(self, new_status):
-        if isinstance(new_status, str):
-            new_status = UserStatus[new_status]
-        self._status = new_status
-
     @property
     def student_id(self):
         return self._student_id
-
-    def __post_init__(self):
-        if isinstance(self._status, str):
-            self.status = UserStatus(self._status)
-
-    def __dict__(self):
-        return {'_id': self.id, '_login': self.login, '_password': self.password,
-                '_status': self.status, '_student_id': self.student_id}
 

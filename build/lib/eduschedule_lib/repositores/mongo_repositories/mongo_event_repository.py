@@ -1,10 +1,10 @@
-from eduschedule.interfaces.repository import BaseRepository
+from eduschedule_lib.interfaces.repository import BaseRepository
 
 
 class MongoEventRepository(BaseRepository):
     def __init__(self, db):
         self.db = db
-        self.events_collection = db["events"]
+        self.events_collection = db.events
 
     def list(self, *args, **kwargs):
         return list(self.events_collection.find())
@@ -14,21 +14,20 @@ class MongoEventRepository(BaseRepository):
 
     def create(self, event, *args, **kwargs):
         new_event = {
-            "_id": event.id,
-            "_name": event.name,
-            "_description": event.description,
-            "_date": event.date
+            "_name": event["name"],
+            "_description": event["description"],
+            "_date": event["date"]
         }
         result = self.events_collection.insert_one(new_event)
         return result.inserted_id
 
     def update(self, event):
         result = self.events_collection.update_one(
-            {"_id": event.id},
+            {"_id": event["_id"]},
             {"$set": {
-                "_name": event.name,
-                "_description": event.description,
-                "_date": event.date
+                "_name": event["name"],
+                "_description": event["description"],
+                "_date": event["date"],
             }}
         )
         return result.modified_count > 0
